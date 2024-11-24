@@ -1,0 +1,25 @@
+{
+  "customers": [
+    {
+      "id": "ioneiwodqiwdipeefef",
+      "username": "refan",
+      "password": "123"
+    },
+    {
+      "id": "f3wmdoqjdjeffjff",
+      "username": "surya",
+      "password": "123"
+    }
+  ],
+  "merchants": [
+    {
+      "id": "odddgodo2h220h92",
+      "balance": 3000
+    },
+    {
+      "id": "idjdp3jisdpjsdpo",
+      "balance": 4000
+    }
+  ],
+  "histories": []
+}
