@@ -43,6 +43,14 @@ menyediakan layanan untuk customer dapat melakukan pembayaran kepada merchant.
 }
 ```
 
+### 4. **Customer**
+
+**URL:** `/customers`  
+**Method:** `GET`
+**Authorization:** `Basic <Token>`
+
+**Deskripsi:** Menampilkan daftar customer yang terdaftar
+
 ## Fitur
 
 - **Autentikasi Pengguna**
