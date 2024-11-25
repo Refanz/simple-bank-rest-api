@@ -21,7 +21,11 @@ var (
 )
 
 func login(w http.ResponseWriter, r *http.Request) {
-	util.CreateResponse(w, authController.Login(r))
+	util.CreateResponse(w, authController.Login(w, r))
+}
+
+func logout(w http.ResponseWriter, r *http.Request) {
+	util.CreateResponse(w, authController.Logout(w, r))
 }
 
 func getCustomerByUsername(w http.ResponseWriter, r *http.Request) {
@@ -34,9 +38,11 @@ func main() {
 
 	getCustomerByUsernameHandler := http.HandlerFunc(getCustomerByUsername)
 	loginHandler := http.HandlerFunc(login)
+	logoutHandler := http.HandlerFunc(logout)
 
 	mux.Handle("/customers", authMiddleware.AuthMiddleware(getCustomerByUsernameHandler))
 	mux.Handle("/login", loginHandler)
+	mux.Handle("/logout", authMiddleware.AuthMiddleware(logoutHandler))
 
 	println("Server is running..")
 	err := http.ListenAndServe(":8080", mux)
