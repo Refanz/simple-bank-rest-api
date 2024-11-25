@@ -10,12 +10,12 @@ import (
 )
 
 var (
-	customerRepo       = repository.CustomerRepository{FilePath: "../data/data.json"}
-	customerService    = service.CustomerService{CustomerRepository: &customerRepo}
-	customerController = controller.CustomerController{CustomerService: customerService}
+	customerRepo    = repository.CustomerRepository{FilePath: "../data/data.json"}
+	customerService = service.CustomerService{CustomerRepository: &customerRepo}
+	authService     = service.AuthService{CustomerService: &customerService}
 
-	authService    = service.AuthService{CustomerService: &customerService}
-	authController = controller.AuthController{AuthService: &authService}
+	customerController = controller.CustomerController{CustomerService: customerService}
+	authController     = controller.AuthController{AuthService: &authService}
 
 	authMiddleware = middleware.AuthMiddleware{CustomerService: &customerService}
 )
@@ -28,19 +28,19 @@ func logout(w http.ResponseWriter, r *http.Request) {
 	util.CreateResponse(w, authController.Logout(w, r))
 }
 
-func getCustomerByUsername(w http.ResponseWriter, r *http.Request) {
-	util.CreateResponse(w, customerController.GetCustomerByUsername(r))
+func getAllCustomers(w http.ResponseWriter, r *http.Request) {
+	util.CreateResponse(w, customerController.GetAllCustomers())
 }
 
 func main() {
 
 	mux := http.NewServeMux()
 
-	getCustomerByUsernameHandler := http.HandlerFunc(getCustomerByUsername)
+	getAllCustomersHandler := http.HandlerFunc(getAllCustomers)
 	loginHandler := http.HandlerFunc(login)
 	logoutHandler := http.HandlerFunc(logout)
 
-	mux.Handle("/customers", authMiddleware.AuthMiddleware(getCustomerByUsernameHandler))
+	mux.Handle("/customers", authMiddleware.AuthMiddleware(getAllCustomersHandler))
 	mux.Handle("/login", loginHandler)
 	mux.Handle("/logout", authMiddleware.AuthMiddleware(logoutHandler))
 
