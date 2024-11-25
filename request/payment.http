@@ -1,0 +1,8 @@
+### Payment
+POST http://localhost:8080/api/payments
+Content-Type: application/json
+Authorization: Basic c3VyeWE6MTIz
+
+{
+  "amount": 20000
+}

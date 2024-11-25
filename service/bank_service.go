@@ -1,11 +1,11 @@
 package service
 
-import (
-	"bank-rest-api/internal/repository"
-)
+import "bank-rest-api/model"
 
-var repo = repository.BankRepository{FilePath: "../../data/data.json"}
+type BankService struct{}
 
-func Transfer() {
-
+func (s *BankService) Transfer(paymentRequest model.Payment) *model.Payment {
+	return &model.Payment{
+		Amount: paymentRequest.Amount,
+	}
 }

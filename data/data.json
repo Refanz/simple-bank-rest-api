@@ -1,25 +1,101 @@
 {
-  "customers": [
-    {
-      "id": "ioneiwodqiwdipeefef",
-      "username": "refan",
-      "password": "123"
-    },
-    {
-      "id": "f3wmdoqjdjeffjff",
-      "username": "surya",
-      "password": "123"
-    }
-  ],
-  "merchants": [
-    {
-      "id": "odddgodo2h220h92",
-      "balance": 3000
-    },
-    {
-      "id": "idjdp3jisdpjsdpo",
-      "balance": 4000
-    }
-  ],
-  "histories": []
+ "customers": [
+  {
+   "id": "1732527894325",
+   "username": "refan",
+   "password": "123"
+  },
+  {
+   "id": "1342527213625",
+   "username": "surya",
+   "password": "123"
+  }
+ ],
+ "histories": [
+  {
+   "id": "1732544210960",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T21:16:50.960036006+07:00"
+  },
+  {
+   "id": "1732544445376",
+   "description": "Customer Transfer to Merchant",
+   "timestamp": "2024-11-25T21:20:45.37606487+07:00"
+  },
+  {
+   "id": "1732544521117",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T21:22:01.117739081+07:00"
+  },
+  {
+   "id": "1732544545958",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T21:22:25.958136828+07:00"
+  },
+  {
+   "id": "1732546404950",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T21:53:24.950250162+07:00"
+  },
+  {
+   "id": "1732546476135",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T21:54:36.135416756+07:00"
+  },
+  {
+   "id": "1732546541629",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T21:55:41.629996825+07:00"
+  },
+  {
+   "id": "1732546658804",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T21:57:38.804611949+07:00"
+  },
+  {
+   "id": "1732546658805",
+   "description": "surya successfully logged in",
+   "timestamp": "2024-11-25T21:57:38.805071948+07:00"
+  },
+  {
+   "id": "1732546674820",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T21:57:54.820361717+07:00"
+  },
+  {
+   "id": "1732546674820",
+   "description": "surya successfully logged in",
+   "timestamp": "2024-11-25T21:57:54.820818194+07:00"
+  },
+  {
+   "id": "1732546705010",
+   "description": "customer Transfer to Merchant",
+   "timestamp": "2024-11-25T21:58:25.010390506+07:00"
+  },
+  {
+   "id": "1732546775695",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T21:59:35.695508087+07:00"
+  },
+  {
+   "id": "1732546775695",
+   "description": "refan successfully logged in",
+   "timestamp": "2024-11-25T21:59:35.69585165+07:00"
+  },
+  {
+   "id": "1732546926324",
+   "description": "/api/auth/login",
+   "timestamp": "2024-11-25T22:02:06.324379872+07:00"
+  },
+  {
+   "id": "1732546926324",
+   "description": "refan successfully logged in",
+   "timestamp": "2024-11-25T22:02:06.324997723+07:00"
+  },
+  {
+   "id": "1732546944038",
+   "description": "logout successfully",
+   "timestamp": "2024-11-25T22:02:24.038811886+07:00"
+  }
+ ]
 }

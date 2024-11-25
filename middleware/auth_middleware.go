@@ -1,25 +1,50 @@
 package middleware
 
-import "net/http"
+import (
+	"bank-rest-api/constant"
+	"bank-rest-api/model"
+	"bank-rest-api/service"
+	"bank-rest-api/util"
+	"net/http"
+)
 
-func AuthMiddleware(w http.ResponseWriter, r *http.Request) bool {
-	username, password, ok := r.BasicAuth()
+type AuthMiddleware struct {
+	CustomerService *service.CustomerService
+}
 
-	if !ok {
-		_, err := w.Write([]byte("something went wrong"))
-		if err != nil {
-			panic(err)
+func (m *AuthMiddleware) AuthMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		username, password, ok := r.BasicAuth()
+
+		if !ok {
+			util.CreateResponse(w, model.Response{
+				Status:  http.StatusUnauthorized,
+				Message: constant.AuthorizationRequiredMessage,
+			})
+			return
 		}
-		return false
-	}
 
-	isValid := (username == "refan") && (password == "123")
-	if !isValid {
-		_, err := w.Write([]byte("login error"))
-		if err != nil {
-			return false
+		customer := m.CustomerService.GetCustomerByUsername(model.Customer{Username: username})
+
+		if customer == nil {
+			util.CreateResponse(w, model.Response{
+				Status:  http.StatusBadRequest,
+				Message: constant.CredentialsErrorMessage,
+			})
+
+			return
 		}
-	}
 
-	return true
+		isValid := (username == customer.Username) && (password == customer.Password)
+		if !isValid {
+			util.CreateResponse(w, model.Response{
+				Status:  http.StatusBadRequest,
+				Message: constant.CredentialsErrorMessage,
+			})
+
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
 }

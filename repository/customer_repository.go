@@ -1,28 +1,13 @@
 package repository
 
 import (
-	model2 "bank-rest-api/internal/model"
-	"encoding/json"
-	"os"
+	"bank-rest-api/model"
 )
 
 type CustomerRepository struct {
-	FilePath string
+	BankRepository
 }
 
-func (r *CustomerRepository) ReadCustomerDataFromJsonFile() []model2.Customer {
-	data, err := os.ReadFile(r.FilePath)
-
-	if err != nil {
-		panic(err)
-	}
-
-	var bank model2.Bank
-	err2 := json.Unmarshal(data, &bank)
-
-	if err2 != nil {
-		panic(err2)
-	}
-
-	return bank.Customer
+func (r *CustomerRepository) ReadCustomers() []model.Customer {
+	return r.BankRepository.ReadBankDataFromJsonFile().Customer
 }
